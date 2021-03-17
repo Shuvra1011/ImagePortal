@@ -2,4 +2,23 @@
     background-color: rgb(195, 220, 241);
     padding: 3px 2px;
     margin: 5px 0px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row nowrap;
 }
+
+.uploadButton {
+    justify-content: flex-end;
+    float: right;
+    margin-right: 5px;
+    width: 50px;
+    border: none;
+    background-color: #7868e6;
+
+}
+
+.hideDiv{
+    display: none;
+}
+
