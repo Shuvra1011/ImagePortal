@@ -20,10 +20,13 @@ const useStorage = (file) => {
 
     // if (!file.size === 0) {
     useEffect(() => {
-        // console.log((file.length === 0) ? '[]' : null);
-        // const storageRef = projectStorage.ref().child(`images/${file.name}`);
+        console.log("UseStorage", file)
+         if (file !== null) {
+             console.log("inside if")
+            // const storageRef = projectStorage.ref().child(`images/${file.name}`);
 
             // console.log(`From useStorage ${fileSizeConverter(70099000)}`);
+
             const storageRef = projectStorage.ref().child(`images/${file.name}`);
             const collectionRef = projectFirestore.collection('images')
             const metadata = {
@@ -33,26 +36,27 @@ const useStorage = (file) => {
             }
             // console.log("Projectstorage ", storageRef.fullPath);
             // console.log(metadata)
-             storageRef.put(file, metadata)
-            .on('state_changed', 
-            (snap) => {
-                let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
-                setProgress(percentage);
+            storageRef.put(file, metadata)
+                .on('state_changed',
+                    (snap) => {
+                        let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+                        setProgress(percentage);
 
-            }, 
-            (err) => {
-                setError(err);
-                console.log("err")
-            },
-            async () => {
-                const url = await storageRef.getDownloadURL();
-                const createdAt = timestamp();
-                collectionRef.add({ url, createdAt })
-                setUrl(url);
-                console.log("Done")
-            })
-        }, [file]);
-        return { progress, url, error }
+                    },
+                    (err) => {
+                        setError(err);
+                        console.log("err")
+                    },
+                    async () => {
+                        const url = await storageRef.getDownloadURL();
+                        const createdAt = timestamp();
+                        collectionRef.add({ url, createdAt })
+                        setUrl(url);
+                        console.log("Done")
+                    })
+                }
+    }, [file]);
+    return { progress, url, error }
     // }else{
 
     // }
