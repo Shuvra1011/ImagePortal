@@ -120,6 +120,43 @@ label:hover{
   color:#155724;
 }
 /* image grid styles */
+.img-grid{
+  margin: 10px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+}
 
+.img-wrap {
+  padding: 10px;
+}
+
+.img-wrap img {
+  width: 300px;
+  height: 200px;
+}
 
 /* modal styles*/
+
+.backdrop {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backdrop img{
+
+  width: 50%;
+  height: 60%;
+  /* justify-content: center;  */
+  margin: 3px auto;
+  box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+  border: 3px solid white;
+}
